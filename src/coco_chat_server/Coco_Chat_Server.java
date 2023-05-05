@@ -4,17 +4,30 @@
  */
 package coco_chat_server;
 
-/**
- *
- * @author gnuno
- */
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Coco_Chat_Server {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args){  
+        try {
+            Socket c;
+            ServerSocket ss = new ServerSocket(1234);
+            
+            System.out.println("Esperando...");
+            c = ss.accept();
+            System.out.println("Conexion recibida");
+
+            c.getOutputStream().write('0');
+            int dato = c.getInputStream().read();
+            
+            System.out.println(dato);
+        } catch (IOException ex) {
+            Logger.getLogger(Socket.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
