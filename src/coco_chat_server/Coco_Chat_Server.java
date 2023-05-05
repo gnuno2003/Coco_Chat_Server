@@ -4,7 +4,13 @@
  */
 package coco_chat_server;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -20,11 +26,17 @@ public class Coco_Chat_Server {
             System.out.println("Esperando...");
             c = ss.accept();
             System.out.println("Conexion recibida");
-
-            c.getOutputStream().write('0');
-            int dato = c.getInputStream().read();
             
-            System.out.println(dato);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(c.getInputStream(), "UTF-8"));
+
+            PrintWriter writer = new PrintWriter(new OutputStreamWriter(c.getOutputStream(), "UTF-8"), true);
+            String mensaje = reader.readLine();
+            
+            writer.println(mensaje);
+            System.out.println("El mensaje del cliente es: " + mensaje);
+            
+            writer.close();
+            
         } catch (IOException ex) {
             Logger.getLogger(Socket.class.getName()).log(Level.SEVERE, null, ex);
         }
