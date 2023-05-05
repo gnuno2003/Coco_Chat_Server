@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Db_Conection {
-    private Connection c;
+    private Connection con;
     
     public Db_Conection()
     {
@@ -17,7 +17,7 @@ public class Db_Conection {
         {
             Class.forName("com.mySQL.Jdbc.Driver");
             
-            c = DriverManager.getConnection("jdbc:mysql://localhost/basededatos","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/basededatos","root","");
         }
         catch (ClassNotFoundException ex)
         {
@@ -27,5 +27,10 @@ public class Db_Conection {
         {
             System.out.println("Error de conexion a la bd: " + ex.getMessage());
         }
+    }
+    
+    public Connection getConnection()
+    {
+        return con;
     }
 }
