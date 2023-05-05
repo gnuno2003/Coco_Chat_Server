@@ -19,8 +19,7 @@ public class UsuarioDAO extends Db_Conection{
     {
         try
         {
-        PreparedStatement ps;
-        ps = getConnection().prepareStatement("INSERT INTO usuario (nombre, username, password, correo, pregunta_respaldo, estado) values (?,?,?,?,?,?)");
+        PreparedStatement ps = getConnection().prepareStatement("INSERT INTO usuario (nombre, username, password, correo, pregunta_respaldo, estado) values (?,?,?,?,?,?)");
         
         ps.setString(1, usuario.nombre);
         ps.setString(2, usuario.username);
@@ -34,6 +33,35 @@ public class UsuarioDAO extends Db_Conection{
         catch(SQLException ex)
         {
             System.out.println(ex.getMessage());
+        }
+        return false;
+    }
+    
+    public boolean IniciarSesion(String username, String password)
+    {
+        try 
+        {
+            PreparedStatement ps =  getConnection().prepareStatement("SELECT * FROM usuario WHERE username=? AND password=?");
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery(); 
+            
+            //Si las credenciales son correctas
+            if(rs.next())
+            {
+                //Aqui necesitamos poner esta variable global o en algun cache para guardarla
+                int id_usuario = rs.getInt("id_usuario");
+                return true;
+            }
+            //Si las credenciales son incorrectas
+            else
+            {
+                return false;
+            }          
+        }
+        catch(SQLException es)
+        {
+            System.out.println(es.getMessage());
         }
         return false;
     }

@@ -20,7 +20,6 @@ public class Coco_Chat_Server {
             ServerSocket ss = new ServerSocket(1234);
             
             System.out.println("Esperando...");
-<<<<<<< HEAD
             while (true) {
                 Socket c = ss.accept();
                 
@@ -34,7 +33,6 @@ public class Coco_Chat_Server {
 
                 System.out.println(dato);
             }
-=======
             c = ss.accept();
             System.out.println("Conexion recibida");
             
@@ -48,7 +46,6 @@ public class Coco_Chat_Server {
             
             writer.close();
             
->>>>>>> Pablo
         } catch (IOException ex) {
             Logger.getLogger(Socket.class.getName()).log(Level.SEVERE, null, ex);
         }
