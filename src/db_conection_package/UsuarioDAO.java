@@ -20,27 +20,16 @@ public class UsuarioDAO extends Db_Conection{
         try
         {
         PreparedStatement ps;
-        ps = getConnection().prepareStatement("INSERT INTO usuario (nombre, registro) values (?,?)");
-        /*
-            a cada signo de interrogación se le asiga un numero coorespondiente
-            a su posicion 
-                    values ( ? , ? )
-                             1   2
+        ps = getConnection().prepareStatement("INSERT INTO usuario (nombre, username, password, correo, pregunta_respaldo, estado) values (?,?,?,?,?,?)");
         
-            ps.setString(numero de signo de interrogacion, valor); 
-            ps.setInt(numero de signo de interrogacion, valor); 
-            ps.setDouble(numero de signo de interrogacion, valor); 
+        ps.setString(1, usuario.nombre);
+        ps.setString(2, usuario.username);
+        ps.setString(3, usuario.password);
+        ps.setString(4, usuario.correo);
+        ps.setString(5, usuario.pregunta_respaldo);
+        ps.setInt(6, usuario.estado);
         
-            aqui tambien se escoje el tipo de dato a asignar.        
-        */
-        
-        // Sustituye al primer signo de interrogacion, por el valor de persona.nombre
-        ps.setString(1, persona.nombre); 
-        
-        // Sustituye al segundo signo de interrogacion, por el valor de persona.registro
-        ps.setInt(2, persona.registro); 
-        
-        return ps.executeUpdate()>0; //Ejecuta la instrucción SQL
+        return ps.executeUpdate()>0;
         } 
         catch(SQLException ex)
         {

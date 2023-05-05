@@ -7,6 +7,7 @@ package db_conection_package;
 
 public class Usuario {
     public int id_usuario;
+    public String nombre;
     public String username;
     public String password;
     public String correo;
@@ -16,6 +17,7 @@ public class Usuario {
     public Usuario()
     {
         id_usuario = 0;
+        nombre = "";
         username = "";
         password = "";
         correo = "";
@@ -23,9 +25,10 @@ public class Usuario {
         estado = 0;        
     }
     
-    public Usuario(String username, String password, String correo, String pregunta_respaldo, int estado)
+    public Usuario(String nombre, String username, String password, String correo, String pregunta_respaldo, int estado)
     {
         this.id_usuario = id_usuario;
+        this.nombre = nombre;
         this.username = username;
         this.password = password;
         this.correo = correo;

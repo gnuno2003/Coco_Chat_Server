@@ -17,7 +17,7 @@ public class Db_Conection {
         {
             Class.forName("com.mySQL.Jdbc.Driver");
             
-            con = DriverManager.getConnection("jdbc:mysql://localhost/basededatos","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/coco_chat_bd","root","");
         }
         catch (ClassNotFoundException ex)
         {
