@@ -6,8 +6,25 @@ package db_conection_package;
 
 /**
  *
- * @author DELL
+ * @author gnuno
  */
 public class InvitacionGrupo {
+    public int id_invitacion_grupo;
+    public int remitente_grupo;
+    public int destinatario_invitacion_grupo;
     
+    public InvitacionGrupo()
+    {
+        id_invitacion_grupo = 0;
+        remitente_grupo = 0;
+        destinatario_invitacion_grupo = 0;
+    }
+    
+    public InvitacionGrupo(int remitente_grupo, int destinatario_invitacion_grupo)
+    {
+        this.id_invitacion_grupo = id_invitacion_grupo;
+        this.remitente_grupo = remitente_grupo;
+        this.destinatario_invitacion_grupo = destinatario_invitacion_grupo;
+    }
 }
+
