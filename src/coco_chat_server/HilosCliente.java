@@ -21,7 +21,7 @@ public class HilosCliente implements Runnable{
     
     @Override
     public void run() {
-       
+        System.out.println("Cliente conectado desde " + clientSocket.getInetAddress().getHostAddress());
     }
     
 }
